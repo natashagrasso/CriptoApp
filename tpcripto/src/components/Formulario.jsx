@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
 const Formulario = ({ busqueda, setBusqueda, setConsultar }) => {
-  const [error, guardarError] = useState(false);
+  const [error, guardarError] = useState(false);//estado para manejear el error
 
   const { criptomoneda, moneda } = busqueda;
 
+  //manjea los cambios en el formulario
   const handleChange = (e) => {
     setBusqueda({
       ...busqueda,
@@ -14,8 +15,7 @@ const Formulario = ({ busqueda, setBusqueda, setConsultar }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (moneda.trim() === '' || criptomoneda.trim() === '') {
+    if (moneda.trim() === '' || criptomoneda.trim() === '') { //si los campos estan vacios muestra el error
       guardarError(true);
       // Evitar la consulta si hay errores
       setConsultar(false);
@@ -33,6 +33,7 @@ const Formulario = ({ busqueda, setBusqueda, setConsultar }) => {
         </p>
       )}
       
+      {/* seleccion de moneda */}
       <form onSubmit={handleSubmit} className="bg-white shadow-md p-9 rounded-md w-full">
         <div className="mb-500 w-full">
         <label htmlFor="Moneda" className="block text-black-700">
@@ -50,6 +51,7 @@ const Formulario = ({ busqueda, setBusqueda, setConsultar }) => {
           <option value='ARS'>Pesos Argentinos </option>
         </select>
 
+        {/* Seleccion de cripto */}
         <label htmlFor="Criptomoneda">Seleccione una criptomoneda</label>
           <select
             id="criptomoneda"
@@ -75,10 +77,10 @@ const Formulario = ({ busqueda, setBusqueda, setConsultar }) => {
             <option value = 'AIDOC'>Aidoc</option>
             <option value = 'XMR'>Monero </option>
             <option value = 'NEO'>NEO </option>
-            <option value = 'IOTA'>Uniswap </option>
+            <option value = 'ITA'>Uniswap </option>
             <option value = 'XLM'>Lumens </option>
             <option value = 'ANT'>A </option>
-            <option value = 'ARAW'> Araw</option>
+            <option value = 'ARAWA'> Araw</option>
 
           </select>
         </div>

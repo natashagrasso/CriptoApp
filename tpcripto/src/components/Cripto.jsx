@@ -3,11 +3,8 @@ import React from 'react';
 const Cripto = ({ resultado, busqueda }) => {
   const { criptomoneda, moneda } = busqueda;
 
-  if (!resultado.DISPLAY) return null;
-
+  if (!resultado.DISPLAY) return null; 
   const displayData = resultado.DISPLAY[criptomoneda]?.[moneda];
-
-  if (!displayData) return null;
 
   return (
     <div className="grid grid-cols-2 gap-4 mb-12 ">
@@ -39,7 +36,6 @@ const Cripto = ({ resultado, busqueda }) => {
         </p>
 
       </div>
-
       <div className="col-span-1"/>
     </div>
   );

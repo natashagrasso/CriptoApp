@@ -13,21 +13,21 @@ const App = () => {
     moneda: ''
   });
 
-  const [resultado, setResultado] = useState({});
-  const [consultar, setConsultar] = useState(false);
+  const [resultado, setResultado] = useState({}); //inicializamos el resultado en vacio, se actualiza con los datos de la api
+  const [consultar, setConsultar] = useState(false); //inicializamos en falso la consulta 
 
   useEffect(() => {
     const consultarAPI = async () => {
-      if (consultar) {
-        const { criptomoneda, moneda } = busqueda;
+      if (consultar) {  //si consultar es true se hace una consulta a la api
+        const { criptomoneda, moneda } = busqueda;  // contiene la info ingresada por el usuario sobre la cripto y la moneda
         const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
-
+        //la url incluye las cripto y monedas seleccionadas por el usuario
         try {
           const respuesta = await fetch(url);
           const resultado = await respuesta.json();
 
           setResultado(resultado);
-          setConsultar(false);
+          setConsultar(false);//evita que se hagan consultas repetidas a la api
         } catch (error) {
           console.error('Error en la solicitud:', error);
         }
